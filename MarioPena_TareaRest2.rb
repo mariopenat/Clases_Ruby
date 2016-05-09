@@ -1,19 +1,31 @@
 require "./MarioPena_TareaRest"
 
 obj = Restaurant.new
-puts "El menu del dia es el siguiente: "
-puts ""
-puts "De entrada tenemos... "
+puts
+puts "::::::::---MENU---::::::::"
+puts 
+puts ">>>ENTRADAS<<<"
 obj.MostrarMenu
+obj.tomarpedido
+puts
+puts
+puts "----¿Desea hacer su pedido?----"
+puts "**Responda con si o no"
+men = gets.chomp
+puts
+if men == 'si'
+	puts "Elija su Entrada...  "
+	ent = obj.Tomar_Pedido
+	puts 
+	puts "Elija su plato de fondo...  "
+	fon = obj.Tomar_Pedido @fondo
+	puts 
+	puts "Elija su postre...  "
+	pos = obj.Tomar_Pedido @postre
 
-puts
-puts
-puts "Que desea de Entrada:  "
-ent = gets.chomp
-puts ""
-puts "y como plato de fondo:  "
-fon = gets.chomp
-puts ""
-puts "Ok y de postre que desea:  "
-pos = gets.chomp
-obj.Tomar_Pedido(ent,fon,pos)
+		if ent.nil? and fon.nil? and pos.nil?
+			puts "Ud no desea nuestro menu, hasta luego..."
+		end
+else
+	puts "OK, hasta luego..."
+end
